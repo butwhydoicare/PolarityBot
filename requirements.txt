@@ -1,0 +1,6 @@
+Discord.py[voice]
+Aiohttp
+Asyncio
+PyNaCL
+youtube_dl
+base64
