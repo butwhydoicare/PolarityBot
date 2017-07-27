@@ -130,19 +130,6 @@ class Administrators:
         await self.client.unban(ctx.message.server, member)
         await self.client.say("Unbanned **%s** from **%s**!" % (member.name, ctx.message.server.name))
 
-    @commands.command(pass_context=True)
-    @commands.has_permissions(kick_members=True)
-    async def prune(self, ctx, days):
-        """ Prune members based on x days """
-        msg = await self.client.prune_members(ctx.message.server, days)
-
-    @commands.command(pass_context=True)
-    @commands.has_permissions(kick_members=True)
-    async def estimateprune(self, ctx, days):
-        """ Estimate how many members would be pruned after x days """
-        mems = await self.client.estimate_pruned_members(ctx.message.server, days)
-        await self.client.say("If you pruned for **%s** days, **%s** members would be pruned" % (days, mems))
-
 
     @commands.command()
     @commands.has_permissions(kick_members=True)
@@ -546,6 +533,8 @@ async def on_member_remove(member):
 @client.event
 async def on_member_join(member):
 	await client.send_message("**%s** has joined **%s**"%(member,member.server.name))
+        role = discord.utils.get(member.server.roles, name="Member")
+        await client.add_roles(member, role)
 
 
 
