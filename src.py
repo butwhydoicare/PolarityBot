@@ -9,7 +9,8 @@ import asyncio, math, random, os, sys, socket, base64
 import urllib.parse
 from mods.checks import embed_perms, cmd_prefix_len, find_channel
 from mods.r34api import get_pics_from_page 
-
+from mods.nsfw import Nsfw
+from mods.members import Members
 
 
 # define external functions
